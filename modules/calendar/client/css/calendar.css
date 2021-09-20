@@ -1,0 +1,15 @@
+.Class {
+  background-color: #00B3FF
+}
+
+.Preference {
+  background-color: #8400FF
+}
+
+input.eventtext {
+  width: 140px
+}
+
+input.date {
+  width: 140px
+}

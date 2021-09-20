@@ -1,0 +1,77 @@
+  <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+
+<section>
+  <div class="page-header">
+    <h1>Calendar</h1>
+  </div>
+  <div class="well">
+      <div class="row">
+          <div class="col-sm-4">
+              <div class="btn-group calTools" ng-show="vm.authentication.user">
+                <button type="button" class="btn btn-primary" ng-click="vm.addEvent(true, 'Course', '08:00:00','09:00:00', 'class description',vm.newDate,vm.newDate)">
+                  Add Course
+                </button>
+              </div>
+              <div class="btn-group calTools" ng-show="vm.authentication.user">
+                <button type="button" class="btn btn-primary" ng-click="vm.addEvent('', 'Preference', '08:00:00', '09:00:00', 'preference description', vm.newDate, vm.newDate)">
+                  Add Preference
+                </button>
+              </div>
+<p>
+              <ul class="list-unstyled">
+                  <li ng-repeat="e in vm.calEvents | filter:vm.selectedDateEvents">
+                      <div class="alert alert-info">
+                        <button type="button" class="ctn btn-info" data-toggle="collapse" href=#id>Collapse</button>
+                        <div id="id" class="collapse in">
+                        <h5>Title:</h5>
+                          <b> <input ng-model="e.title" class="eventtext"></b>
+                        <h5>Start Time (HH:MM:SS):</h5>
+                          <b> <input ng-model="e.startT" class ="date"></b>
+                        <h5>End Time (HH:MM:SS):</h5>
+                          <b> <input ng-model="e.endT" class ="date"></b>
+                        <h5>Start Date (YYYY-MM-DD):</h5>
+                          <b> <input ng-model="e.startD" class ="date"></b>
+                        <h5>End Date (YYYY-MM-DD):</h5>
+                          <b> <input ng-model="e.endD" class ="date"></b>
+                        <h5>Description:</h5>
+                          <b> <input ng-model="e.description" class="eventtext"></b>
+                          <a class="close" ng-click="vm.remove(e.customIndex)"><i class="glyphicon glyphicon-remove"></i></a>
+                          <div class="btn-group calTools" ng-show="vm.authentication.user">
+                            <button type="button" class="btn btn-primary" ng-click="vm.update(e)">
+                              Update
+                            </button>
+                          </div>
+                          </div>
+
+
+                          <br>
+                          <!--
+                          {{e.start | date:"MMM dd"}} - {{e.end | date:"MMM dd"}}
+                          -->
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="col-sm-8">
+              <div ui-calendar="vm.uiConfig.calendar" class="calendar" ng-model="vm.eventSources"></div>
+          </div>
+      </div>
+  </div>
+
+<!--
+  <div ui-calendar="vm.uiConfig.calendar" class="span8 calendar" ng-model="vm.eventSources"></div>
+  vm.addEvent(e.type, e.title, e.startT, e.endT, e.description, e.startD, e.endD); vm.remove(e.customIndex)
+
+-->
+</section>
+</div>
+</body>
+</html>

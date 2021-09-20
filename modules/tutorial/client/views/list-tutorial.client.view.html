@@ -1,0 +1,18 @@
+<section>
+  <div class="page-header">
+    <h1>Tutorial</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="tutorial in vm.tutorial" ui-sref="tutorial.view({ tutorialId: tutorial._id })" class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="tutorial.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="tutorial.user" ng-bind="tutorial.user.displayName"></span>
+        <span ng-if="!tutorial.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="tutorial.title"></h4>
+      <p class="list-group-item-text" ng-bind="tutorial.content"></p>
+    </a>
+  </div>
+</section>
